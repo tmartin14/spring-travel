@@ -46,5 +46,11 @@ public class HotelsMvcController {
 		bookingService.cancelBooking(id);
 		return "redirect:../hotels/search";
 	}
+	
+	@RequestMapping(value = "/bookings/delete", method = RequestMethod.GET)
+	public String deleteAllBookings() {
+		bookingService.deleteAllBookings();
+		return "redirect:../hotels/search";
+	}
 
 }

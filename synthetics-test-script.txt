@@ -1,15 +1,17 @@
-driver.get('http://tm-travel.cfapps.io');
+driver.get('http://newrelictravel.cfapps.io');
 driver.findElement(By.linkText("Login")).click();
 driver.findElement(By.id("submit")).click();
 driver.findElement(By.id("searchString")).click();
 driver.findElement(By.id("searchString")).clear();
-driver.findElement(By.id("searchString")).sendKeys("Ri");
-driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
-driver.findElement(By.linkText("View Hotel")).click();
-driver.findElement(By.cssSelector("button[type=\"submit\"]")).click();
+driver.findElement(By.id("searchString")).sendKeys("an");
+driver.findElement(By.xpath("//*[@id=\"searchCriteria\"]/fieldset/div[3]/button")).click();
+driver.findElement(By.xpath("//*[@id=\"hotelResults\"]/table/tbody/tr[6]/td[5]/a")).click();
+driver.findElement(By.xpath("//*[@id=\"main\"]/form/div/button")).click();
 driver.findElement(By.id("proceed")).click();
 driver.findElement(By.name("_eventId_confirm")).click();
 driver.findElement(By.linkText("Logout")).click();
 driver.findElement(By.linkText("Continue")).click();
+
+
 
 

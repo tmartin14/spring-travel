@@ -65,10 +65,10 @@
 					</div>
 					<div class="span-7 last">
 						<p>
-							<form:select id="beds" path="beds">
-								<form:option label="One king-size bed" value="1"/>
-								<form:option label="Two double beds" value="2"/>
-								<form:option label="Three beds" value="3"/>
+							<form:select id="beds" path="beds"> 
+								<form:option label="One king-size bed" value="1" />
+								<form:option label="Two double beds" value="2" selected="selected"  />
+								<form:option label="Three beds" value="3"  />
 							</form:select>
 						</p>
 					</div>
@@ -83,7 +83,7 @@
 							<form:radiobutton id="non-smoking" path="smoking" label="Non Smoking" value="false"/>
 						</p>
 						<script type="text/javascript">
-							Spring.addDecoration(new Spring.ElementDecoration({
+						Spring.addDecoration(new Spring.ElementDecoration({
 								elementId : 'smoking',
 								widgetType : "dijit.form.RadioButton",
 								widgetModule : "dijit.form.CheckBox",

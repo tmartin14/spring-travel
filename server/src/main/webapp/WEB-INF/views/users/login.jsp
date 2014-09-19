@@ -13,6 +13,12 @@
 		<li>scott/rochester</li>
         <li>josh/la</li>
 	</ul>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<a href="/bookings/delete">Delete All Bookings</a>
 </div>
 
 <div class="span-10 append-2 last">
@@ -28,7 +34,36 @@
 			<p>
 				<label for="j_username">User:</label>
 				<br />
-				<input type="text" name="j_username" id="j_username" value="keith" <c:if test="${not empty param.login_error}">value="<%= session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_USERNAME_KEY) %>"</c:if> />
+				<%  int num = (int) (  (Math.random() * 5)+1);
+					String username = "";
+					String password = "";
+					switch(num) {
+			            case 1:
+			                username = "keith";
+			                password = "melbourne";
+			                break;
+			            case 2:
+			            	username = "erwin";
+			                password = "leuven";
+			                break;
+			            case 3:
+			            	username = "jeremy";
+			                password = "atlanta";
+			                break;
+			            case 4:
+			            	username = "scott";
+			                password = "rochester";
+			                break;
+			            case 5:
+			            	username = "josh";
+			                password = "la";
+			                break;
+			            default:
+			            	username = "josh";
+			                password = "la";
+			           }
+				%>
+				<input type="text" name="j_username" id="j_username" value="<%= username %>" <c:if test="${not empty param.login_error}">value="<%= session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_USERNAME_KEY) %>"</c:if> />
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "j_username",
@@ -39,7 +74,7 @@
 			<p>
 				<label for="j_password">Password:</label>
 				<br />
-				<input type="password" name="j_password" id="j_password" value = "melbourne"  />
+				<input type="password" name="j_password" id="j_password" value = "<%= password %>"  />
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ElementDecoration({
 						elementId : "j_password",

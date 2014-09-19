@@ -65,5 +65,13 @@ public interface BookingService {
 	 * @param bo booking to persist
 	 */
 	void persistBooking(Booking bo);
+	
+	
+	/**
+	 * delete all bookings
+	 *
+	 * @param bo booking to persist
+	 */
+	void deleteAllBookings();
 }
 
