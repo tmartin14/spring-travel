@@ -10,7 +10,7 @@
 	
 	<link rel="shortcut icon" href="/favicon.ico?v=1" />
 	<link rel="icon" href="/favicon.ico?v=1" />
-
+  
 	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/javascript/dijit/themes/tundra/tundra.css" />" />
 	<link rel="stylesheet" href="<c:url value="/resources/styles/blueprint/screen.css" />" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="<c:url value="/resources/styles/blueprint/print.css" />" type="text/css" media="print" />

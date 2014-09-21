@@ -27,6 +27,6 @@
 		<li>SpringSource Tool Suite integration, with support for graphical flow modeling and visualization</li>
 	</ul>
 	<p>
-		<a href="hotels/search">Start your Spring Travel experience</a>
+		<a href="hotels/search">Start your New Relic Travel experience</a>
 	</p>
 </div>
