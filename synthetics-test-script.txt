@@ -1,17 +1,97 @@
 driver.get('http://newrelictravel.cfapps.io');
+
+// wait for the Login button to be visible
+driver.wait(function() {
+  return driver.isElementPresent(By.linkText("Login")).then(function(found) {
+  	return found;
+ 	});
+}, 1000); //< wait max 1sec
+
+
+// OK, now login
 driver.findElement(By.linkText("Login")).click();
 driver.findElement(By.id("submit")).click();
+
+
+// Find the Search box, clear it, enter your search criteria and hit the Search Button
 driver.findElement(By.id("searchString")).click();
 driver.findElement(By.id("searchString")).clear();
-driver.findElement(By.id("searchString")).sendKeys("an");
-driver.findElement(By.xpath("//*[@id=\"searchCriteria\"]/fieldset/div[3]/button")).click();
-driver.findElement(By.xpath("//*[@id=\"hotelResults\"]/table/tbody/tr[6]/td[5]/a")).click();
-driver.findElement(By.xpath("//*[@id=\"main\"]/form/div/button")).click();
-driver.findElement(By.id("proceed")).click();
-driver.findElement(By.name("_eventId_confirm")).click();
-driver.findElement(By.linkText("Logout")).click();
-driver.findElement(By.linkText("Continue")).click();
 
+//randomize the list of hotels
+var num = Math.floor((Math.random() * 3) + 1);
+var str = '';
+if(num == 1) str = "an";
+else if(num == 2) str = "on";
+     else str = "ar";
+
+// Search for Hotels
+driver.findElement(By.id("searchString")).sendKeys(str);
+driver.findElement(By.xpath("//*[@id=\"searchCriteria\"]/fieldset/div[3]/button")).click();
+
+
+// Now wait for the list of hotels to populate
+driver.wait(function() {
+  return driver.isElementPresent(By.id("hotelResults")).then(function(found) {
+  	return found;
+ 	});
+}, 1000); //< wait max 1sec
+
+
+// Pick a random hotel (this search always gives 12 results) 
+num = Math.floor((Math.random() * 10) + 1);
+var parm = "//*[@id=\"hotelResults\"]/table/tbody/tr[" + num +"]/td[5]/a";
+driver.findElement(By.xpath(parm)).click();
+driver.findElement(By.xpath("//*[@id=\"main\"]/form/div/button")).click();
+
+
+// Wait for the specific hotel detail page to load
+driver.wait(function() {
+  return driver.isElementPresent(By.id("proceed")).then(function(found) {
+  	return found;
+ 	});
+}, 1000); //< wait max 1sec
+
+
+
+//  Specify random preferences for Smoking Room, # of beds, etc.
+//  1. Randomly set the Smoking / Non-Smoking Room Type
+num = Math.floor((Math.random() * 2) +1);
+if(num == 1)
+  driver.findElement(By.id("smoking")).click();
+else
+  driver.findElement(By.id("non-smoking")).click();
+
+//  2. Randomly set the number of beds (1, 2, or 3)
+num = Math.floor((Math.random() * 3) + 1);
+//var dropdown = driver.FindElement(By.xpath("//*[@id=\"beds\"]"));
+//dropdown.click();
+//parm = "option[value='" + num +"']";
+//dropDown.findElement(By.Css(parm)).click();
+
+//selectElement
+//selectElement.SelectByValue(num); 
+//selectElement.SelectByIndex(num); 
+//driver.findElement(By.id("beds")).selectByIndex(num);
+
+
+//  Now book the Room
+driver.findElement(By.id("proceed")).click();
+
+
+//  Wait for the Booking confirmation page
+driver.wait(function() {
+  return driver.isElementPresent(By.name("_eventId_confirm")).then(function(found) {
+  	return found;
+ 	});
+}, 1000); //< wait max 1sec
+
+
+//  Confirm the reservation
+driver.findElement(By.name("_eventId_confirm")).click();
+
+
+// and finally, log out
+driver.findElement(By.linkText("Logout")).click();
 
 
 

@@ -1,5 +1,5 @@
 <div>
-	<h1>Welcome to New Relic Travel </h1>  
+	<h1>Welcome to New Relic Travel </h1>   
 	<p>
 	 	This sample demonstrates how to use Spring MVC and Spring Web Flow together with JavaServerPages (JSP) and Tiles.
 	 	<br /> <br/>
@@ -7,7 +7,7 @@
 	 	visit the New Relic page <a href="https://rpm.newrelic.com/accounts/671602/applications/5090681"  target="_blank">here</a> (if you are a member of the New Relic account team).
 	</p>
 	<hr/>
-	<p>
+	<p> 
 		The key features illustrated in this sample include:
 	</p>
 	<ul>
@@ -29,4 +29,4 @@
 	<p>
 		<a href="hotels/search">Start your New Relic Travel experience</a>
 	</p>
-</div>
+</div> 
