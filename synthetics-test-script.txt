@@ -1,21 +1,84 @@
-driver.get('http://newrelictravel.cfapps.io');
+/**
+ * Welcome to the Synthetics JavaScript IDE - Browser Edition
+ * You can think of it like node.js lite. Everything you'd expect to find in a
+ * node.js environment is also available here, with a few notable exceptions:
+ *
+ * Feel free to explore, or check out the full documentation
+ * https://docs.newrelic.com/docs/synthetics/new-relic-synthetics/scripting-monitors/writing-scripted-browsers
+ * for details.
+ */
 
-// wait for the Login button to be visible
-driver.wait(function() {
-  return driver.isElementPresent(By.linkText("Login")).then(function(found) {
-  	return found;
- 	});
-}, 1000); //< wait max 1sec
+/**
+ * Welcome to the Synthetics JavaScript IDE - Browser Edition
+ * You can think of it like node.js lite. Everything you'd expect to find in a
+ * node.js environment is also available here, with a few notable exceptions:
+ *
+ * - 'require' is limited to a useful subset of modules, get the full list from
+ *   the [API docs](...)
+ *
+ * - We've added a few top-level vars to the scope, all starting with '$':
+ *
+ *     $browser - Synthetics-flavored WebDriver session for browser automation
+ *     $driver - Main WebDriver public API module
+ *     $http - 'request' node.js module (for making HTTP requests)
+ *     $util - Common tools to aid with grunt work
+ *     $Synthetics - The main Synthetics API module
+ *
+ * Feel free to explore, or check out the [full documentation](...) for details.
+ *
+ * @external webdriver
+ * @see http://selenium.googlecode.com/git/docs/api/javascript/index.html
+ *
+ * @external request
+ * @see https://github.com/mikeal/request
+ */
 
+var assert = require('assert'),
+  By = $driver.By,
+
+// Modify these values for instant gratification:
+//------------------------------------------------------------------------------
+  WEBSITE_URL = 'http://NewRelicTravel.cfapps.io',
+  WEBSITE_ID = 'NR-Travel',
+
+  VERIFY_TITLE = 'New Relic Travel: Spring MVC and Web Flow Reference Application',
+  VERIFY_ELEMENT = By.tagName('h1');
+//------------------------------------------------------------------------------
+
+// Load the URL in the browser
+console.log('Loading website', WEBSITE_ID);
+$browser.get(WEBSITE_URL, WEBSITE_ID);
+
+// Check the title
+if (!!VERIFY_TITLE) {
+  console.log('Verifying the title', VERIFY_TITLE);
+
+  // Wait for the title to match the expected value, failing after 15 seconds
+  $browser.wait(function () {
+    return $browser.getTitle().then(function (title) {
+      return title === VERIFY_TITLE;
+    });
+  }, 1000);
+}
+
+// Check that the element exists
+if (!!VERIFY_ELEMENT) {
+  console.log('Verifying an element exists', VERIFY_ELEMENT.using, VERIFY_ELEMENT.value);
+
+  // Wait for an element matching the locator, failing after 1 second
+  $browser.waitForElement(VERIFY_ELEMENT, 1000);
+}
+
+console.log('If we got this far: SUCCESS, the app is alive!');
 
 // OK, now login
-driver.findElement(By.linkText("Login")).click();
-driver.findElement(By.id("submit")).click();
-
+$browser.findElement(By.linkText("Login")).click();
+$browser.findElement(By.id("submit")).click();
+console.log('Logged In');
 
 // Find the Search box, clear it, enter your search criteria and hit the Search Button
-driver.findElement(By.id("searchString")).click();
-driver.findElement(By.id("searchString")).clear();
+$browser.findElement(By.id("searchString")).click();
+$browser.findElement(By.id("searchString")).clear();
 
 //randomize the list of hotels
 var num = Math.floor((Math.random() * 3) + 1);
@@ -25,73 +88,62 @@ else if(num == 2) str = "on";
      else str = "ar";
 
 // Search for Hotels
-driver.findElement(By.id("searchString")).sendKeys(str);
-driver.findElement(By.xpath("//*[@id=\"searchCriteria\"]/fieldset/div[3]/button")).click();
-
+$browser.findElement(By.id("searchString")).sendKeys(str);
+$browser.findElement(By.xpath("//*[@id=\"searchCriteria\"]/fieldset/div[3]/button")).click();
+console.log('Searching for hotels using:  ' + str + '...');
 
 // Now wait for the list of hotels to populate
-driver.wait(function() {
-  return driver.isElementPresent(By.id("hotelResults")).then(function(found) {
+$browser.wait(function() {
+  return $browser.isElementPresent(By.id("hotelResults")).then(function(found) {
   	return found;
  	});
-}, 1000); //< wait max 1sec
+}, 1000); //< wait max 1 sec
+console.log('Got the list of hotels...');
 
-
-// Pick a random hotel (this search always gives 12 results) 
+// Pick a random hotel (these searches always gives at least 10 results) 
 num = Math.floor((Math.random() * 10) + 1);
 var parm = "//*[@id=\"hotelResults\"]/table/tbody/tr[" + num +"]/td[5]/a";
-driver.findElement(By.xpath(parm)).click();
-driver.findElement(By.xpath("//*[@id=\"main\"]/form/div/button")).click();
-
+$browser.findElement(By.xpath(parm)).click();
+$browser.findElement(By.xpath("//*[@id=\"main\"]/form/div/button")).click();
 
 // Wait for the specific hotel detail page to load
-driver.wait(function() {
-  return driver.isElementPresent(By.id("proceed")).then(function(found) {
+$browser.wait(function() {
+  return $browser.isElementPresent(By.id("proceed")).then(function(found) {
   	return found;
  	});
 }, 1000); //< wait max 1sec
-
-
+console.log('Loaded the selected hotel...');
 
 //  Specify random preferences for Smoking Room, # of beds, etc.
 //  1. Randomly set the Smoking / Non-Smoking Room Type
 num = Math.floor((Math.random() * 2) +1);
 if(num == 1)
-  driver.findElement(By.id("smoking")).click();
+  $browser.findElement(By.id("smoking")).click();
 else
-  driver.findElement(By.id("non-smoking")).click();
+  $browser.findElement(By.id("non-smoking")).click();
 
+// This is not working.   Need to figure out how to select a dropdown
 //  2. Randomly set the number of beds (1, 2, or 3)
 num = Math.floor((Math.random() * 3) + 1);
-//var dropdown = driver.FindElement(By.xpath("//*[@id=\"beds\"]"));
-//dropdown.click();
-//parm = "option[value='" + num +"']";
-//dropDown.findElement(By.Css(parm)).click();
+$browser.findElement(By.xpath("//*[@id=\"beds\"]/option[" + num + "]")).click();
 
-//selectElement
-//selectElement.SelectByValue(num); 
-//selectElement.SelectByIndex(num); 
-//driver.findElement(By.id("beds")).selectByIndex(num);
-
+console.log('Set the reservation parameters...  beds=' + num);
 
 //  Now book the Room
-driver.findElement(By.id("proceed")).click();
-
+$browser.findElement(By.id("proceed")).click();
 
 //  Wait for the Booking confirmation page
-driver.wait(function() {
-  return driver.isElementPresent(By.name("_eventId_confirm")).then(function(found) {
+$browser.wait(function() {
+  return $browser.isElementPresent(By.name("_eventId_confirm")).then(function(found) {
   	return found;
  	});
 }, 1000); //< wait max 1sec
-
+console.log('Got the confirmation page...');
 
 //  Confirm the reservation
-driver.findElement(By.name("_eventId_confirm")).click();
-
+$browser.findElement(By.name("_eventId_confirm")).click();
+console.log('Reservation Complete...');
 
 // and finally, log out
-driver.findElement(By.linkText("Logout")).click();
-
-
-
+$browser.findElement(By.linkText("Logout")).click();
+console.log('Completed Successfully!');
