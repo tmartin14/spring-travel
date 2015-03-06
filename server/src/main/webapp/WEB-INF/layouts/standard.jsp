@@ -28,7 +28,7 @@
         	throw new Error("Hey!  Why aren't you using Chrome?")
         // Just throwing an error for any browser except Chrome
     </script>
-</head>
+</head>  
 <body class="tundra">
 <div id="page" class="container">
 	<div id="header">

@@ -34,7 +34,7 @@
 			<p>
 				<label for="j_username">User:</label>
 				<br />
-				<%  int num = (int) (  (Math.random() * 5)+1);
+				<%  int num = (int) (  (Math.random() * 4)+1);
 					String username = "";
 					String password = "";
 					switch(num) {
@@ -54,10 +54,7 @@
 			            	username = "scott";
 			                password = "rochester";
 			                break;
-			            case 5:
-			            	username = "josh";
-			                password = "la";
-			                break;
+
 			            default:
 			            	username = "josh";
 			                password = "la";
