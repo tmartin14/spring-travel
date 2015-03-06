@@ -147,3 +147,5 @@ console.log('Reservation Complete...');
 // and finally, log out
 $browser.findElement(By.linkText("Logout")).click();
 console.log('Completed Successfully!');
+
+
