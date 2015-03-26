@@ -10,7 +10,7 @@
 	<br />
 	${hotel.country}
 </address>
-<form action="booking" method="get">
+<form id="bookHotel" action="booking" method="get">
 	<p>
 		Nightly Rate:
 		<spring:bind path="hotel.price">${status.value}</spring:bind>
@@ -20,3 +20,9 @@
 		<button type="submit">Book Hotel</button>
 	</div>
 </form>
+<script type="text/javascript">
+     document.getElementById('bookHotel').addEventListener('submit', function (e) {
+		var hotelID = e.target.elements['hotelId'].value;
+    	newrelic.addPageAction( 'bookHotel',  {hotelID: hotelID } );
+    }) 
+</script>

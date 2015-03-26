@@ -4,7 +4,7 @@
 <h1>Search Hotels</h1>
 
 <c:url var="hotelsUrl" value="/hotels"/>
-<form:form modelAttribute="searchCriteria" action="${hotelsUrl}" method="get" cssClass="inline">
+<form:form id="searchForm" modelAttribute="searchCriteria" action="${hotelsUrl}" method="get" cssClass="inline">
     <span class="errors span-18">
     	<form:errors path="*"/>
     </span>
@@ -46,3 +46,10 @@
 				
     </fieldset>
 </form:form>
+<script type="text/javascript">
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        var searchString = e.target.elements['searchString'].value;
+        newrelic.addPageAction('hotelSearch', {searchCriteria: searchString});
+    })
+</script>
+	

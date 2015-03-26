@@ -4,7 +4,11 @@
 	 	This sample demonstrates how to use Spring MVC and Spring Web Flow together with JavaServerPages (JSP) and Tiles.
 	 	<br /> <br/>
 	 	This application is being used to showcase the features of New Relic as an APM and Software Analytics Solution.  You can 
-	 	visit the New Relic page <a href="https://rpm.newrelic.com/accounts/671602/applications/5090681"  target="_blank">here</a> (if you are a member of the New Relic account team).
+	 	visit the New Relic page <a href="https://rpm.newrelic.com/accounts/781649/applications"  target="_blank">here</a> (if you are a member of the New Relic account team).
+	</p>
+	<hr/>
+	<p>
+		<h2><a href="hotels/search">Start your New Relic Travel experience here!</a></h2>
 	</p>
 	<hr/>
 	<p> 
@@ -26,7 +30,4 @@
 		<li>Exception handling support across all layers of the application</li>
 		<li>SpringSource Tool Suite integration, with support for graphical flow modeling and visualization</li>
 	</ul>
-	<p>
-		<a href="hotels/search">Start your New Relic Travel experience</a>
-	</p>
 </div> 

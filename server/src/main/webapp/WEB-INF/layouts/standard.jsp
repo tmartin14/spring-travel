@@ -61,7 +61,7 @@
 				</a>
 			</p>
 			<p><br/><br/>
-			<a href="https://rpm.newrelic.com/accounts/671602/applications/5090681" target="_blank">
+			<a href="https://rpm.newrelic.com/accounts/781649/applications" target="_blank">
 			      <img src="<c:url value="/resources/images/NewRelic1.png"/>" height="48" alt="New Relic" />
 		    </a>  
 		   </p>

@@ -20,7 +20,7 @@
 	<br />
 	<a href="/bookings/delete">Delete All Bookings</a>
 </div>
-
+  
 <div class="span-10 append-2 last">
 	<c:if test="${not empty param.login_error}">
 		<div class="error">
@@ -28,7 +28,7 @@
 			Reason: <%= ((AuthenticationException) session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY)).getMessage() %>
 		</div>
 	</c:if>
-	<form name="f" action="<c:url value="/users/login/authenticate" />" method="post">
+	<form id="loginForm" name="f" action="<c:url value="/users/login/authenticate" />" method="post">
 		<fieldset>
 			<legend>Login Information</legend>
 			<p>
@@ -54,7 +54,7 @@
 			            	username = "scott";
 			                password = "rochester";
 			                break;
-
+   
 			            default:
 			            	username = "josh";
 			                password = "la";
@@ -92,8 +92,15 @@
 				<button id="submit" type="submit">Login</button>
 				<script type="text/javascript">
 					Spring.addDecoration(new Spring.ValidateAllDecoration({event : 'onclick', elementId : 'submit'}));
-				</script>
+				</script>				
 			</p>
 		</fieldset>
-	</form>
+	</form> 
+	<script type="text/javascript">
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        var userName = e.target.elements['j_username'].value;
+        newrelic.addPageAction('userLogin', {userName: userName});
+    })
+    </script>
+	
 </div>

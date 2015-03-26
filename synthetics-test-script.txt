@@ -89,7 +89,7 @@ else if(num == 2) str = "on";
 
 // Search for Hotels
 $browser.findElement(By.id("searchString")).sendKeys(str);
-$browser.findElement(By.xpath("//*[@id=\"searchCriteria\"]/fieldset/div[3]/button")).click();
+$browser.findElement(By.xpath("//*[@id=\"searchForm\"]/fieldset/div[3]/button")).click();
 console.log('Searching for hotels using:  ' + str + '...');
 
 // Now wait for the list of hotels to populate
