@@ -75,6 +75,7 @@ public class JpaBookingService implements BookingService {
 		    con.setDoOutput(true);
 		    con.getOutputStream().write(Data.getBytes("UTF-8"));
 		    con.getInputStream();
+		    con.disconnect();
 		} catch(Exception ex) {
 			
 		}
