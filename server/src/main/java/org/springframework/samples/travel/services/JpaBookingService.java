@@ -1,6 +1,7 @@
 package org.springframework.samples.travel.services;
  
 import com.newrelic.api.agent.NewRelic;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.samples.travel.domain.Booking;
@@ -17,6 +18,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 
 import java.util.*;
+import java.net.*;
 
 /**
  * A JPA-based implementation of the Booking Service. Delegates to a JPA entity
@@ -62,7 +64,33 @@ public class JpaBookingService implements BookingService {
 			return null;
 		}
 		
+		//    **************************************************************
+		//    Adding a Call to RabbitMQ to put the searchCriteria on a queue
+		//    **************************************************************
+		try{
+			String Data = "value=" + pattern;
+		    URL url = new URL("http://nr-abbitmq-spring.cfapps.io/publish");
+		    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		    con.setRequestMethod("POST");
+		    con.setDoOutput(true);
+		    con.getOutputStream().write(Data.getBytes("UTF-8"));
+		    con.getInputStream();
+		} catch(Exception ex) {
+			
+		}
+	    
+		
+		
+		
+	/*	if(Http.post("http://nr-abbitmq-spring.cfapps.io/publish", pattern).text().equals("OK")){
+		    //..success
+		}else{
+		    //failure
+		}
+	*/
+		//    **************************************************************
 
+		
 		slowThisDown(criteria.getSlowDown()*1000);
 		
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -100,6 +128,30 @@ public class JpaBookingService implements BookingService {
 		
 		log.debug("returned " + hotels.size() + " results");
 		NewRelic.addCustomParameter("searchResultSize",hotels.size() );
+		
+		
+		//	**************************************************************
+		//    Adding a Call to RabbitMQ to remove the searchCriteria from the queue
+		//  **************************************************************
+		try{
+			URL url= new URL("http://nr-abbitmq-spring.cfapps.io/get");
+		    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		    con.setRequestMethod("POST");
+		    con.setDoOutput(true);
+		    //con.getOutputStream().write(Data.getBytes("UTF-8"));
+		    con.getInputStream();
+		    con.disconnect();
+		} catch(Exception ex) {
+			
+		}
+
+		/*		if(Http.post("http://nr-abbitmq-spring.cfapps.io/get").text().equals("OK")){
+		    //..success
+		}else{
+		    //failure
+		}
+*/
+		//    **************************************************************
 
 		return hotels;
 	}
