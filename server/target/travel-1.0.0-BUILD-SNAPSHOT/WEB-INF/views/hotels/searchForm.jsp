@@ -4,14 +4,16 @@
 <h1>Search Hotels</h1>
 
 <c:url var="hotelsUrl" value="/hotels"/>
-<form:form modelAttribute="searchCriteria" action="${hotelsUrl}" method="get" cssClass="inline">
+<form:form id="searchForm" modelAttribute="searchCriteria" action="${hotelsUrl}" method="get" cssClass="inline">
     <span class="errors span-18">
     	<form:errors path="*"/>
     </span>
 	<fieldset>
 		<div class="span-8">
 			<label for="searchString">Search String:</label>
-			<form:input id="searchString" path="searchString"/>
+			<form:input id="searchString" path="searchString"  />
+			
+			
 			<script type="text/javascript">
 				Spring.addDecoration(new Spring.ElementDecoration({
 					elementId : "searchString",
@@ -22,6 +24,7 @@
 			<label for="slowDown">Slowdown?	&nbsp;&nbsp;&nbsp;	</label>		
 			<form:select id="slowDown" path="slowDown" >
 					<form:option label="None" value="0"/>
+					<form:option label="1 Second" value="1"/>
 					<form:option label="5 Seconds" value="5"/>
 					<form:option label="20 Seconds" value="20"/>
 					<form:option label="60 Seconds" value="60"/>
@@ -43,3 +46,10 @@
 				
     </fieldset>
 </form:form>
+<script type="text/javascript">
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+        var searchString = e.target.elements['searchString'].value;
+        newrelic.addPageAction('hotelSearch', {searchCriteria: searchString});
+    })
+</script>
+	

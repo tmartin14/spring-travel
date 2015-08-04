@@ -31,7 +31,7 @@ import java.net.*;
 public class JpaBookingService implements BookingService {
 
 	private Log log = LogFactory.getLog(getClass());
- 
+  
 	private EntityManager em;
 
 	@PersistenceContext
@@ -77,7 +77,7 @@ public class JpaBookingService implements BookingService {
 		    con.getInputStream();
 		    con.disconnect();
 		} catch(Exception ex) {
-			
+			 
 		}
 	    
 		

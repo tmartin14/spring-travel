@@ -3,9 +3,14 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
+<head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Spring Travel: Spring MVC and Web Flow Reference Application</title>
+	
+	<title>New Relic Travel: Spring MVC and Web Flow Reference Application</title>
+	
+	<link rel="shortcut icon" href="/favicon.ico?v=1" />
+	<link rel="icon" href="/favicon.ico?v=1" />
+  
 	<link type="text/css" rel="stylesheet" href="<c:url value="/resources/javascript/dijit/themes/tundra/tundra.css" />" />
 	<link rel="stylesheet" href="<c:url value="/resources/styles/blueprint/screen.css" />" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="<c:url value="/resources/styles/blueprint/print.css" />" type="text/css" media="print" />
@@ -16,7 +21,14 @@
     <script type="text/javascript" src="<c:url value="/resources/javascript/dojo/dojo.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/javascript/spring/Spring.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/javascript/spring/Spring-Dojo.js" />"></script>
-</head>
+    <script type="text/javascript" >
+    	if(navigator.appVersion.indexOf('Chrome') > 0 ) 
+            throw new Error("You're using Chrome!")
+    	else
+        	throw new Error("Hey!  Why aren't you using Chrome?")
+        // Just throwing an error for any browser except Chrome
+    </script>
+</head>  
 <body class="tundra">
 <div id="page" class="container">
 	<div id="header">
@@ -48,6 +60,11 @@
 					<img src="<c:url value="/resources/images/diplomat.jpg"/>" alt="generic hotel" />
 				</a>
 			</p>
+			<p><br/><br/>
+			<a href="https://rpm.newrelic.com/accounts/781649/applications" target="_blank">
+			      <img src="<c:url value="/resources/images/NewRelic1.png"/>" height="48" alt="New Relic" />
+		    </a>  
+		   </p>
 		</div>
 		<div id="main" class="span-18 last">
 			<tiles:insertAttribute name="body" />
@@ -55,13 +72,14 @@
 	</div>
 	<hr />
 	<div id="footer">
-		<div id="local" class="span-4">
-				<a href="http://www.newrelic.com">Monitoring
-					provided by:<br /> <img
-					src="<c:url value="/resources/images/NewRelic.png"/>"
+		<div class="span-4">
+				<a href="http://rpm.newrelic.com">Monitoring provided by:
+				<br /> 
+					<img src="<c:url value="/resources/images/NewRelic1.png"/>"
 					alt="New Relic" height="35" width="120" />
-				</a>
+					</a>
 			</div>
+
 		<a href="http://www.springframework.org">
 			<img src="<c:url value="/resources/images/powered-by-spring.png"/>" alt="Powered by Spring" />
 		</a>

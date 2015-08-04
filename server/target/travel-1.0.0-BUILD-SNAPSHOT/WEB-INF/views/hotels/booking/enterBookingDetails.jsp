@@ -65,10 +65,10 @@
 					</div>
 					<div class="span-7 last">
 						<p>
-							<form:select id="beds" path="beds">
-								<form:option label="One king-size bed" value="1"/>
-								<form:option label="Two double beds" value="2"/>
-								<form:option label="Three beds" value="3"/>
+							<form:select id="beds" path="beds"> 
+								<form:option label="One king-size bed" value="1" />
+								<form:option label="Two double beds" value="2" selected="selected"  />
+								<form:option label="Three beds" value="3"  />
 							</form:select>
 						</p>
 					</div>
@@ -83,7 +83,7 @@
 							<form:radiobutton id="non-smoking" path="smoking" label="Non Smoking" value="false"/>
 						</p>
 						<script type="text/javascript">
-							Spring.addDecoration(new Spring.ElementDecoration({
+						Spring.addDecoration(new Spring.ElementDecoration({
 								elementId : 'smoking',
 								widgetType : "dijit.form.RadioButton",
 								widgetModule : "dijit.form.CheckBox",
@@ -104,9 +104,9 @@
 					</div>
 					<div id="amenities" class="span-7 last">
 						<p>
-							<form:checkbox path="amenities" value="OCEAN_VIEW" label="Ocean View" />
+							<form:checkbox path="amenities" value="OCEAN_VIEW" label="Ocean View" checked="true" />
 							<br />
-							<form:checkbox path="amenities" value="LATE_CHECKOUT" label="Late Checkout" />
+							<form:checkbox path="amenities" value="LATE_CHECKOUT" label="Late Checkout" checked="true" />
 							<br />
 							<form:checkbox path="amenities" value="MINIBAR" label="Minibar" />
 						</p>
@@ -126,7 +126,7 @@
 						<label for="creditCard">Credit Card #:</label>
 					</div>
 					<div class="span-7 last">
-						<p><form:input path="creditCard"/></p>
+						<p><form:input path="creditCard"  value="1234123412341234"/></p>
 						<script type="text/javascript">
 							Spring.addDecoration(new Spring.ElementDecoration({
 								elementId : "creditCard",
@@ -141,7 +141,7 @@
 						<label for="creditCardName">Credit Card Name:</label>
 					</div>
 					<div class="span-7 last">
-						<p><form:input path="creditCardName" maxlength="40"/></p>
+						<p><form:input path="creditCardName" maxlength="40" value="Dr. Awesome" /></p>
 						<script type="text/javascript">
 							Spring.addDecoration(new Spring.ElementDecoration({
 								elementId : "creditCardName",
@@ -168,14 +168,14 @@
 								<form:option label="Sep" value="9"/>
 								<form:option label="Oct" value="10"/>
 								<form:option label="Nov" value="11"/>
-								<form:option label="Dec" value="12"/>
+								<form:option label="Dec" value="12" selected="true"/>
 							</form:select>
 							<form:select path="creditCardExpiryYear">
-								<form:option label="2008" value="1"/>
-								<form:option label="2009" value="2"/>
-								<form:option label="2010" value="3"/>
-								<form:option label="2011" value="4"/>
-								<form:option label="2012" value="5"/>
+								<form:option label="2014" value="1"/>
+								<form:option label="2015" value="2"/>
+								<form:option label="2016" value="3" selected="true"/>
+								<form:option label="2017" value="4"/>
+								<form:option label="2018" value="5"/>
 							</form:select>
 						</p>
 					</div>
