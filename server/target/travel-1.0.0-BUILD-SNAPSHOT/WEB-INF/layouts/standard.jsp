@@ -28,6 +28,36 @@
         	throw new Error("Hey!  Why aren't you using Chrome?")
         // Just throwing an error for any browser except Chrome
     </script>
+
+
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/boomerang.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/rt.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/navtiming.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/guid.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/errors.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/auto-xhr.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/spa.js" />"></script>
+   <script type="text/javascript" src="<c:url value="/resources/javascript/boomerang/plugins/clicks.js" />"></script>
+
+ 
+   <script>
+     BOOMR.init({
+       beacon_url: "http://od-splunk4appmngt.splunkoxygen.com:8088/services/collector/raw?channel=58452BEE-B289-4C58-883F-B11E97075A31",
+       beacon_type: "POST",
+       beacon_auth_token: "Splunk 58452BEE-B289-4C58-883F-B11E97075A31",
+	   site_domain: "Simple Travel"
+
+       //beacon_url: "http://tmart.info.tm:8088/services/collector/raw?channel=6F0037AF-B3D3-4E07-8C6C-2813DC062CDB",
+       //beacon_type: "POST",
+       //beacon_auth_token: "Splunk 6F0037AF-B3D3-4E07-8C6C-2813DC062CDB",
+       
+     });
+
+     BOOMR.addVar({ "ua_raw": navigator.userAgent	 });
+     BOOMR.addVar({ "guid": BOOMR.utils.getCookie("GUID")	 });
+   </script>
+
+
 </head>  
 <body class="tundra">
 <div id="page" class="container">
