@@ -1,0 +1,15 @@
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/Bookings.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/web/WebConfiguration.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/Hotel.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/User.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/services/SearchCriteria.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/Booking.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/services/BookingService.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/rest/RestConfiguration.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/Hotels.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/util/DateFormatXmlAdapter.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/services/JpaBookingService.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/domain/Amenity.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/web/HotelsMvcController.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/rest/HotelsRestController.java
+/Users/tomm/dev/github/spring-travel/server/src/main/java/org/springframework/samples/travel/web/BookingFlowHandler.java

@@ -6,7 +6,7 @@
 <head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<title>New Relic Travel: Spring MVC and Web Flow Reference Application</title>
+	<title>Spring Travel: Spring MVC and Web Flow Reference Application</title>
 	
 	<link rel="shortcut icon" href="/favicon.ico?v=1" />
 	<link rel="icon" href="/favicon.ico?v=1" />
@@ -60,11 +60,6 @@
 					<img src="<c:url value="/resources/images/diplomat.jpg"/>" alt="generic hotel" />
 				</a>
 			</p>
-			<p><br/><br/>
-			<a href="https://rpm.newrelic.com/accounts/781649/applications" target="_blank">
-			      <img src="<c:url value="/resources/images/NewRelic1.png"/>" height="48" alt="New Relic" />
-		    </a>  
-		   </p>
 		</div>
 		<div id="main" class="span-18 last">
 			<tiles:insertAttribute name="body" />
@@ -72,14 +67,6 @@
 	</div>
 	<hr />
 	<div id="footer">
-		<div class="span-4">
-				<a href="http://rpm.newrelic.com">Monitoring provided by:
-				<br /> 
-					<img src="<c:url value="/resources/images/NewRelic1.png"/>"
-					alt="New Relic" height="35" width="120" />
-					</a>
-			</div>
-
 		<a href="http://www.springframework.org">
 			<img src="<c:url value="/resources/images/powered-by-spring.png"/>" alt="Powered by Spring" />
 		</a>

@@ -1,15 +1,11 @@
 <div>
-	<h1>Welcome to New Relic Travel </h1>   
+	<h1>Welcome to Simple Travel </h1>   
 	<p>
 	 	This sample demonstrates how to use Spring MVC and Spring Web Flow together with JavaServerPages (JSP) and Tiles.
 	 	<br /> <br/>
-	 	This application is being used to showcase the features of New Relic as an APM and Software Analytics Solution.
-	 	<br/><br/>
-	 	<h2><a href="https://rpm.newrelic.com/accounts/781649/applications"  target="_blank">You can visit the New Relic account here</a></h2> (if you are a member of the New Relic account team).
-	</p>
 	<hr/>
 	<p>
-		<h2><a href="hotels/search">Start your New Relic Travel experience here!</a></h2>
+		<h2><a href="hotels/search">Start your travel experience here!</a></h2>
 	</p>
 	<hr/>
 	<p> 

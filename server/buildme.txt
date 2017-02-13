@@ -1,0 +1,11 @@
+
+
+=================================
+
+to build, simply run
+
+    mvn clean install
+
+You should end up with a travel.war file located in the ./target directory
+
+=================================

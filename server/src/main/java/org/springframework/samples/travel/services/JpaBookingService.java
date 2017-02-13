@@ -1,6 +1,5 @@
 package org.springframework.samples.travel.services;
  
-import com.newrelic.api.agent.NewRelic;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -54,7 +53,6 @@ public class JpaBookingService implements BookingService {
 
 		String pattern = getSearchPattern(criteria);
 		log.debug("search pattern: " + pattern);
-		NewRelic.addCustomParameter("searchCriteria",pattern ); 
 
 		
 		//     If the user enters only a single character in the search box, let's throw an unhandled exception.
@@ -112,7 +110,6 @@ public class JpaBookingService implements BookingService {
 				criteriaBuilder.like(criteriaBuilder.lower(address), pattern),
 				criteriaBuilder.like(criteriaBuilder.lower(name), pattern));
 
-		NewRelic.addCustomParameter("searchMaxPrice", criteria.getMaximumPrice()); 
 		if (criteria.getMaximumPrice() > 0) {
 			predicate = criteriaBuilder.and(predicate, criteriaBuilder.lessThanOrEqualTo(price, criteria.getMaximumPrice()));
 		}
@@ -128,7 +125,6 @@ public class JpaBookingService implements BookingService {
 
 		
 		log.debug("returned " + hotels.size() + " results");
-		NewRelic.addCustomParameter("searchResultSize",hotels.size() );
 		
 		
 		//	**************************************************************
@@ -212,20 +208,6 @@ public class JpaBookingService implements BookingService {
 	@Transactional
 	public void persistBooking(Booking booking) {
 		em.merge(booking);
-	
-		NewRelic.addCustomParameter("BookingNumberOfNights",booking.getNights() );
-		NewRelic.addCustomParameter("BookingRevenue",Integer.valueOf(booking.getTotal().intValue()) );
-		NewRelic.addCustomParameter("BookingRate",Integer.valueOf(booking.getHotel().getPrice().intValue() ) );
-
-		NewRelic.addCustomParameter("BookingHotelName",booking.getHotel().getName() +" - " + booking.getHotel().getCity() + ", " + booking.getHotel().getState() );
-		NewRelic.addCustomParameter("BookingCity", booking.getHotel().getCity() + ", " + booking.getHotel().getState() );
-		NewRelic.addCustomParameter("BookingState", booking.getHotel().getState() );
-		NewRelic.addCustomParameter("BookingZip", booking.getHotel().getZip() );
-
-		NewRelic.addCustomParameter("BookingSmokingRoom",(booking.isSmoking()) ? "Smoking" : "Non-Smoking" );
-		NewRelic.addCustomParameter("BookingNumberOfBeds",booking.getBeds() );
-		NewRelic.addCustomParameter("BookingAgent",booking.getUser().getName() );
-
 	}
 
 	@Transactional

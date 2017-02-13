@@ -99,7 +99,7 @@
 	<script type="text/javascript">
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         var userName = e.target.elements['j_username'].value;
-        newrelic.addPageAction('userLogin', {userName: userName});
+        //newrelic.addPageAction('userLogin', {userName: userName});
     })
     </script>
 	
