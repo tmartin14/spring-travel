@@ -1,10 +1,16 @@
 ---
 applications:
-- name: spring-travel
+- name: tm-travel
   memory: 1G
   instances: 1
   host: spring-travel-${random-word}
   domain: cfapps.io
   path: target/travel.war
   services:
-    - travel-db
+   - My MySQL DB
+   - My New Relic
+
+properties:
+  router:
+    tracing:
+      enable_zipkin: true
