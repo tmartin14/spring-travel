@@ -18,7 +18,7 @@
 	<br />
 	<br />
 	<br />
-	<a href="/bookings/delete">Delete All Bookings</a>
+	<a href="/travel/bookings/delete">Delete All Bookings</a>
 </div>
   
 <div class="span-10 append-2 last">
